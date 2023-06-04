@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      image: python:3.9.12
+    image: python:3.9.12
     restart: until-stopped
     ports:
       - 8501:8501
