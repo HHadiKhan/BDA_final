@@ -1,0 +1,15 @@
+version: '3'
+services:
+  my_python_container:
+    container_name: my_python_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+      image: python:3.9.12
+    restart: until-stopped
+    ports:
+      - 8501:8501
+    volumes:
+      - ./my_app:/app
+    working_dir: /app
+    command: python my_script.py
