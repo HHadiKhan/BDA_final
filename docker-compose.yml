@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: python:3.9.12
-    restart: until-stopped
+    restart: unless-stopped
     ports:
       - 8501:8501
     volumes:
