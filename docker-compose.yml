@@ -1,13 +1,17 @@
 version: '3'
 services:
-  my_python_container:
-    container_name: my_python_container
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: python:3.9.12
-    restart: no
+  streamlit:
+    container_name: streamlitapi
+    image: streamlit/streamlit:latest
     ports:
-      - 8501:8501
-    working_dir: /app
-    command: python my_script.py
+      - "8501:8501"
+    volumes:
+      - ./app:/app
+  python:
+    container_name: python_container
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+    depends_on:
+      - streamlit
