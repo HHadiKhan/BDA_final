@@ -1,12 +1,9 @@
-FROM python:3.9.12
+FROM python:3.9
 
 WORKDIR /app
-COPY . /app
 
-COPY ./requirements.txt /app
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt .
 
-EXPOSE 8501
+RUN pip install -r requirements.txt
 
-CMD ["python", "my_script.py"]
-
+CMD [ "streamlit", "run", "my_webapp.py" ]
