@@ -2,7 +2,7 @@ version: '3'
 services:
   streamlit:
     container_name: streamlitapi
-    image: aminehy/docker-streamlit-app:latest
+    image: aminehy/docker-streamlit-app
     ports:
       - "8501:8501"
     volumes:
@@ -10,7 +10,7 @@ services:
   python:
     container_name: python_container
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dockerfile
     volumes:
       - ./app:/app
     depends_on:
