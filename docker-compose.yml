@@ -7,11 +7,12 @@ services:
       - "8501:8501"
     volumes:
       - ./app:/app
+    depends_on:
+      - python
   python:
     container_name: python_container
     build:
       dockerfile: Dockerfile.dockerfile
     volumes:
       - ./app:/app
-    depends_on:
-      - streamlit
+    
