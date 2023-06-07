@@ -1,0 +1,25 @@
+version: '3'
+services:
+  streamlit:
+    container_name: streamlitapi
+    image: aminehy/docker-streamlit-app
+    build:
+      dockerfile: Dockerfile2.dockerfile
+    ports:
+      - 8502:8502
+    volumes:
+      - ./app:/app
+      - ./my_webapp.py:/app/my_webapp.py
+    command: streamlit run my_webapp.py
+  python:
+    container_name: python_container
+    build:
+      dockerfile: Dockerfile.dockerfile
+    volumes:
+      - ./app:/app
+      - ./my_webapp.py:/app/my_webapp.py
+    ports:
+      - 8051:8051
+    depends_on:
+      - streamlit
+    command: streamlit run my_webapp.py
